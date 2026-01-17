@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Random Color Picker</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #5f8d5d;
+            transition: background-color 0.3s ease;
+        }
+
+        .card {
+            background: #ffffff;
+            padding: 25px 30px;
+            border-radius: 12px;
+            text-align: center;
+            min-width: 260px;
+        }
+
+        .color-code {
+            font-size: 36px;
+            font-weight: 700;
+            margin-bottom: 15px;
+            letter-spacing: 1px;
+        }
+
+        .btn {
+            width: 100%;
+            padding: 10px 0;
+            background: #000;
+            color: #fff;
+            border: none;
+            border-radius: 6px;
+            font-size: 18px;
+            cursor: pointer;
+        }
+
+        .btn:active {
+            transform: scale(0.98);
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="card">
+        <div class="color-code" id="colorCode">#5f8d5d</div>
+        <button class="btn" id="btn">Click Me</button>
+    </div>
+
+    <script>
+        const btn = document.getElementById("btn");
+        const colorCode = document.getElementById("colorCode");
+
+        function getRandomColor() {
+            const hex = "0123456789abcdef";
+            let color = "#";
+            for (let i = 0; i < 6; i++) {
+                color += hex[Math.floor(Math.random() * 16)];
+            }
+            return color;
+        }
+
+        btn.addEventListener("click", () => {
+            const randomColor = getRandomColor();
+            document.body.style.backgroundColor = randomColor;
+            colorCode.textContent = randomColor;
+        });
+    </script>
+
+</body>
+
+</html>
